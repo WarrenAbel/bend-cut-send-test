@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q&amp;A | Bend Cut Send</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="metals.html">Metals Available</a>
+  <a href="qa.html" class="active">Q&amp;A</a>
+  <a href="request-quote.html">Request a Quote</a>
+  <a href="ask-question.html">Ask a Question</a>
+</nav>
+<main class="container">
+  <h1>Q &amp; A</h1>
+  <table class="qa-table">
+    <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>What are your tolerances?</td>
+        <td>
+          Cutting: within 0.25mm. Bending: +/- 1mm typical (communicate critical bends).<br>
+          <strong>Key Parameters:</strong>
+          <ul>
+            <li>Min bend radius: soft materials ≈ 1× thickness; harder materials ≈ ≥2× thickness.</li>
+            <li>Min flange length: 4× thickness or 12mm.</li>
+            <li>Feature spacing: ≥4× thickness from bend lines.</li>
+            <li>Bend angle tolerance: ±1° | Bend length: ±0.20mm per bend.</li>
+            <li>ISO 2768 referenced for general tolerances.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Tips for effective bending?</td>
+        <td>
+          Avoid very acute (&lt;130°) or extreme obtuse (&gt;175°) angles. Space successive bends. Consider material hardness and yield strength.
+        </td>
+      </tr>
+      <tr>
+        <td>What metals do you offer?</td>
+        <td>
+          Mild Steel, 3CR12, 430, 304, 316 Stainless Steels, Aluminium 1050. Reach out for unlisted materials.
+        </td>
+      </tr>
+      <tr>
+        <td>How do I design a part?</td>
+        <td>
+          See <a href="how-it-works.html">How it works</a>. Provide shape, dimensions, or drawing with critical measurements. Learn CAD for iterative control.
+        </td>
+      </tr>
+      <tr>
+        <td>How do returns work?</td>
+        <td>
+          Custom parts produced to approved design & tolerance generally not returnable for suitability. If we make an error we replace at no cost.
+        </td>
+      </tr>
+      <tr>
+        <td>Surface finishes differences?</td>
+        <td>
+          <ul>
+            <li>Hot Rolled: rough scale, cheaper.</li>
+            <li>Cold Rolled: smooth, precise, stronger.</li>
+            <li>Galvanised: zinc-coated corrosion resistance.</li>
+            <li>2D / No.1 / BA / 2B: various stainless finishes (matte to bright).</li>
+            <li>PVC variants: protective film.</li>
+            <li>No.4 PVC: uniform brushed, repairable.</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p><a href="ask-question.html" class="cta-btn">Ask a Question</a> <a href="request-quote.html" class="cta-btn accent">Request a Quote</a></p>
+</main>
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Bend Cut Send.</p>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

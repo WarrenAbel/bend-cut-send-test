@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ask a Question | Bend Cut Send</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="metals.html">Metals Available</a>
+  <a href="qa.html">Q&amp;A</a>
+  <a href="request-quote.html">Request a Quote</a>
+  <a href="ask-question.html" class="active">Ask a Question</a>
+</nav>
+<main class="container">
+  <h1>Ask a Question</h1>
+  <p>This is a static demo. In production, the form stores your question and emails you a confirmation.</p>
+
+  <form class="form-card" onsubmit="alert('Static demo only. No submission processed.'); return false;">
+    <div class="grid-2">
+      <label>First Name
+        <input type="text" required>
+      </label>
+      <label>Last Name
+        <input type="text" required>
+      </label>
+    </div>
+    <label>Email
+      <input type="email" required>
+    </label>
+    <label>Your Question
+      <textarea rows="6" required></textarea>
+    </label>
+    <!-- For real GitHub Pages submission you could integrate Formspree:
+    Replace form tag with: <form action="https://formspree.io/f/xxxxxxx" method="POST" class="form-card">
+    Add name attributes to inputs.
+    -->
+    <button type="submit" class="cta-btn">Submit Question</button>
+  </form>
+</main>
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Bend Cut Send.</p>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

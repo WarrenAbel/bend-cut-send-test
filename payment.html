@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment (Demo) | Bend Cut Send</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="metals.html">Metals Available</a>
+  <a href="qa.html">Q&amp;A</a>
+  <a href="request-quote.html">Request a Quote</a>
+  <a href="ask-question.html">Ask a Question</a>
+</nav>
+<main class="container">
+  <h1>Payment (Demo)</h1>
+  <p>This static page demonstrates where a payment redirect would occur. In production (PHP hosting), a secure form posts to PayFast or the selected gateway and handles ITN notifications server-side.</p>
+  <div class="form-card">
+    <p><strong>Item:</strong> Custom Metal Part</p>
+    <p><strong>Amount:</strong> R 500.00</p>
+    <button class="cta-btn" onclick="alert('Static demo only. Redirect would occur here.');">Proceed to Secure Payment</button>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Bend Cut Send.</p>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

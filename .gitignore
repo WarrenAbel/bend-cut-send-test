@@ -1,0 +1,4 @@
+# Not strictly required for Pages, but useful if you add tooling
+*.log
+node_modules/
+dist/

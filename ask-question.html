@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Ask a Question | Bend Cut Send</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,6 +16,11 @@
   <a href="request-quote.html">Request a Quote</a>
   <a href="ask-question.html" class="active">Ask a Question</a>
 </nav>
+
+<header class="hero-bg">
+  <img src="image.png" alt="Bend. Cut. Send. CNC bending, laser cutting, and fast delivery." class="hero-image">
+</header>
+
 <main class="container">
   <h1>Ask a Question</h1>
   <p>This is a static demo. In production, the form stores your question and emails you a confirmation.</p>
@@ -23,28 +28,26 @@
   <form class="form-card" onsubmit="alert('Static demo only. No submission processed.'); return false;">
     <div class="grid-2">
       <label>First Name
-        <input type="text" required>
+        <input type="text" name="first_name" required>
       </label>
       <label>Last Name
-        <input type="text" required>
+        <input type="text" name="last_name" required>
       </label>
     </div>
     <label>Email
-      <input type="email" required>
+      <input type="email" name="email" required>
     </label>
     <label>Your Question
-      <textarea rows="6" required></textarea>
+      <textarea name="question" rows="6" required></textarea>
     </label>
-    <!-- For real GitHub Pages submission you could integrate Formspree:
-    Replace form tag with: <form action="https://formspree.io/f/xxxxxxx" method="POST" class="form-card">
-    Add name attributes to inputs.
-    -->
+    <!-- For real GitHub Pages submission you could integrate Formspree later -->
     <button type="submit" class="cta-btn">Submit Question</button>
   </form>
 </main>
+
 <footer class="site-footer">
   <p>&copy; <span id="year"></span> Bend Cut Send.</p>
 </footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

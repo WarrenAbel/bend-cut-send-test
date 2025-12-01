@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Request a Quote | Bend Cut Send</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -35,9 +35,31 @@
     <label>Phone Number
       <input type="text" name="phone" required>
     </label>
-    <label>Full Address
-      <textarea name="address" rows="3" required></textarea>
-    </label>
+
+    <!-- Simple Address Fields -->
+    <div class="grid-2">
+      <label>Street Address
+        <input type="text" name="street" placeholder="Street number and name" required>
+      </label>
+      <label>City
+        <input type="text" name="city" required>
+      </label>
+    </div>
+    <div class="grid-2">
+      <label>Building Type
+        <select name="building_type" required>
+          <option value="">-- Select --</option>
+          <option>House</option>
+          <option>Apartment</option>
+          <option>Office</option>
+          <option>Industrial</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>Postal Code
+        <input type="text" name="postal_code" inputmode="numeric" pattern="\d{4}" title="4-digit postal code" placeholder="e.g., 2191" required>
+      </label>
+    </div>
 
     <label>Metal &amp; Thickness
       <select name="metal_thickness" required>
@@ -45,7 +67,7 @@
 
         <!-- Mild Steel -->
         <option>Mild Steel - cold rolled - 0.8mm</option>
-        <option>Mild Steel - cold rolled - 1.0mm</option>
+        <option>Mild Steel -cold rolled - 1.0mm</option>
         <option>Mild Steel - cold rolled - 1.2mm</option>
         <option>Mild Steel - hot rolled - 1.6mm</option>
         <option>Mild Steel - hot rolled - 2.0mm</option>

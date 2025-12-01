@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Q&amp;A | Bend Cut Send</title>
+  <title>Q&A | Bend Cut Send</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,67 +18,177 @@
 </nav>
 <main class="container">
   <h1>Q &amp; A</h1>
-  <table class="qa-table">
-    <thead><tr><th>Question</th><th>Answer</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>What are your tolerances?</td>
-        <td>
-          Cutting: within 0.25mm. Bending: +/- 1mm typical (communicate critical bends).<br>
-          <strong>Key Parameters:</strong>
-          <ul>
-            <li>Min bend radius: soft materials ≈ 1× thickness; harder materials ≈ ≥2× thickness.</li>
-            <li>Min flange length: 4× thickness or 12mm.</li>
-            <li>Feature spacing: ≥4× thickness from bend lines.</li>
-            <li>Bend angle tolerance: ±1° | Bend length: ±0.20mm per bend.</li>
-            <li>ISO 2768 referenced for general tolerances.</li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>Tips for effective bending?</td>
-        <td>
-          Avoid very acute (&lt;130°) or extreme obtuse (&gt;175°) angles. Space successive bends. Consider material hardness and yield strength.
-        </td>
-      </tr>
-      <tr>
-        <td>What metals do you offer?</td>
-        <td>
-          Mild Steel, 3CR12, 430, 304, 316 Stainless Steels, Aluminium 1050. Reach out for unlisted materials.
-        </td>
-      </tr>
-      <tr>
-        <td>How do I design a part?</td>
-        <td>
-          See <a href="how-it-works.html">How it works</a>. Provide shape, dimensions, or drawing with critical measurements. Learn CAD for iterative control.
-        </td>
-      </tr>
-      <tr>
-        <td>How do returns work?</td>
-        <td>
-          Custom parts produced to approved design & tolerance generally not returnable for suitability. If we make an error we replace at no cost.
-        </td>
-      </tr>
-      <tr>
-        <td>Surface finishes differences?</td>
-        <td>
-          <ul>
-            <li>Hot Rolled: rough scale, cheaper.</li>
-            <li>Cold Rolled: smooth, precise, stronger.</li>
-            <li>Galvanised: zinc-coated corrosion resistance.</li>
-            <li>2D / No.1 / BA / 2B: various stainless finishes (matte to bright).</li>
-            <li>PVC variants: protective film.</li>
-            <li>No.4 PVC: uniform brushed, repairable.</li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+  <section class="qa-item">
+    <h2>What are your tolerances?</h2>
+    <p><strong>Cutting</strong> is normally within <strong>0.25mm</strong>.</p>
+    <p><strong>Bending</strong> has many influences – we normally work on <strong>+/- 1mm</strong>. Critical bending tolerance needs to be communicated.</p>
+
+    <h3>Key Bending Parameters</h3>
+    <ul>
+      <li><strong>Minimum Bend Radius:</strong> This is the smallest possible radius for a bend without the material cracking or deforming undesirably.
+        <ul>
+          <li><strong>Soft materials</strong> like aluminium and mild steel: minimum bend radius is often <strong>1×</strong> the material thickness.</li>
+          <li><strong>Harder materials</strong> like the other metals listed: a radius of <strong>≥ 2×</strong> the material thickness is generally required to prevent cracking.</li>
+          <li><strong>General rule:</strong> For materials between <strong>2–6 mm</strong> thick, a radius of <strong>1×</strong> thickness is often acceptable; for thicker materials, <strong>2–3×</strong> is recommended.</li>
+        </ul>
+      </li>
+      <li><strong>Minimum Flange Length:</strong> This is the shortest possible length of material that can be successfully bent on a die.
+        <ul>
+          <li><strong>General rule:</strong> Minimum flange length of <strong>4×</strong> the material thickness or <strong>12mm</strong>, whichever is greater.</li>
+        </ul>
+      </li>
+      <li><strong>Z-Bends:</strong> Maintain a specific minimum <em>X-measurement</em> (distance from the bend to the edge) to prevent tool collisions.</li>
+      <li><strong>Feature Spacing:</strong> Features like holes or other bends need to be placed a sufficient distance from bend lines.
+        <ul>
+          <li><strong>General rule:</strong> Keep features at least <strong>4×</strong> the material thickness away from bend lines to avoid issues during manufacturing.</li>
+        </ul>
+      </li>
+      <li><strong>Curls:</strong> For more complex curls, the spacing from other features should be a minimum of the curl radius plus the sheet metal thickness.</li>
+    </ul>
+
+    <h3>Tolerances</h3>
+    <ul>
+      <li><strong>Bend Angle Tolerance:</strong> ±1°</li>
+      <li><strong>Length Tolerance:</strong> ±0.20mm (0.010 inches) per bend</li>
+      <li><strong>ISO 2768:</strong> Widely recognized reference for general tolerances in precision sheet metal manufacturing (linear, angular, geometric).</li>
+    </ul>
+  </section>
+
+  <section class="qa-item">
+    <h2>Do you have tips for effective bending?</h2>
+    <ul>
+      <li><strong>Avoid acute angles:</strong> Do not design for angles sharper than <strong>130°</strong>.</li>
+      <li><strong>Avoid extreme obtuse angles:</strong> Do not design for angles greater than <strong>175°</strong>.</li>
+      <li><strong>Be mindful of successive bends:</strong> Place bends as far apart as possible; successive bends can be difficult to fit on the die and complicate manufacturing.</li>
+      <li><strong>Consider material hardness:</strong> The specific material and its yield strength are crucial factors for bend radii and feasibility.</li>
+    </ul>
+  </section>
+
+  <section class="qa-item">
+    <h2>What metals do you offer?</h2>
+    <p>If you need something not in this list, please reach out to us.</p>
+
+    <h3>Mild Steel</h3>
+    <p>Mild steel (low-carbon steel) contains ~0.05%–0.25% carbon. Its low carbon content makes it ductile, malleable, and easy to work with—widely used in construction, manufacturing, and fabrication.</p>
+
+    <h3>3CR12 Stainless Steel</h3>
+    <p>3CR12 is a corrosion-resistant utility ferritic stainless steel developed in South Africa by Columbus Stainless. It bridges the gap between carbon/mild steel and more expensive austenitic grades (like 304 and 316), offering a balance of corrosion resistance, strength, and cost-effectiveness.</p>
+
+    <h3>430 Stainless Steel</h3>
+    <p>430 is a straight-chromium ferritic stainless steel (~16–18% chromium, little to no nickel). It’s widely used for its good corrosion resistance, formability, and affordability compared to austenitic grades like 304.</p>
+
+    <h3>304 Stainless Steel</h3>
+    <p>The most widely used stainless grade (austenitic). Excellent corrosion resistance, durability, and formability; often called the “workhorse” of stainless steels.</p>
+
+    <h3>316 Stainless Steel</h3>
+    <p>A premium austenitic stainless steel with exceptional corrosion resistance, especially in harsh and chloride-rich environments (often called “marine grade stainless”). Performs better than 304 in seawater and de-icing salts.</p>
+
+    <h3>Aluminium 1050</h3>
+    <p>Commercially pure aluminium (≥99.5%). Excellent corrosion resistance, high ductility, and very good thermal/electrical conductivity. Non-heat-treatable; strength is via cold working (work hardening).</p>
+  </section>
+
+  <section class="qa-item">
+    <h2>How do I design a part?</h2>
+    <ul>
+      <li>Refer to the <a href="how-it-works.html">How it works</a> section for guiding comments.</li>
+      <li>Have an idea of the shape and size. If it must fit into a space or assembly, measure carefully.</li>
+      <li>If you can’t produce a CAD model, send a picture or drawing with <strong>critical dimensions</strong> and intended <strong>material thickness</strong>.</li>
+      <li>If you need help to get to a design that solves your problem, please get in touch.</li>
+      <li>If you like to iterate yourself, consider learning <strong>CAD</strong>. There are free and paid packages (online and installable) with different workflows.</li>
+      <li>We prefer online tools for easy collaboration and lower hardware requirements.</li>
+      <li>Choose a tool with good online support and community forums.</li>
+    </ul>
+  </section>
+
+  <section class="qa-item">
+    <h2>How do returns work?</h2>
+    <ul>
+      <li>Refer to the <a href="how-it-works.html">How it works</a> section for more detail.</li>
+      <li>Because we provide custom parts made to order, we can’t accept returns if the part matches the <strong>approved design</strong> and is within <strong>tolerance</strong>.</li>
+      <li>If we made a mistake, we’ll send a replacement part at no additional cost to you.</li>
+    </ul>
+  </section>
+
+  <section class="qa-item">
+    <h2>What are the different surface finishes?</h2>
+    <p>Refer to the <a href="metals.html">Materials available</a> page for which finishes are available for which metals.</p>
+
+    <h3>Hot rolled</h3>
+    <ul>
+      <li><strong>Surface finish:</strong> Rougher, with scale (oxide layer).</li>
+      <li><strong>Dimensions:</strong> Less precise tolerances (can shrink while cooling).</li>
+      <li><strong>Strength:</strong> Lower than cold rolled, but more ductile.</li>
+      <li><strong>Cost:</strong> Cheaper due to less processing.</li>
+    </ul>
+
+    <h3>Cold rolled</h3>
+    <ul>
+      <li><strong>Surface finish:</strong> Smooth, clean, often shiny.</li>
+      <li><strong>Dimensions:</strong> Very precise thickness and shape control.</li>
+      <li><strong>Strength:</strong> Higher tensile strength and hardness (work hardening).</li>
+      <li><strong>Cost:</strong> More expensive due to extra processing.</li>
+    </ul>
+
+    <h3>Galvanised</h3>
+    <ul>
+      <li>Excellent corrosion resistance due to a zinc coating (protective and sacrificial).</li>
+      <li>Durable, cost-effective, low-maintenance, long lifespan.</li>
+      <li>Good strength, weldability, formability, and recyclability.</li>
+    </ul>
+
+    <h3>2D (cold rolling, annealing, pickling)</h3>
+    <ul>
+      <li><strong>Appearance:</strong> Silvery-white, dull matte, non-reflective.</li>
+      <li><strong>Smoothness:</strong> Smoother than No.1, less smooth than 2B.</li>
+      <li><strong>Texture:</strong> Non-directional, uniform dull surface.</li>
+      <li><strong>Corrosion resistance:</strong> Enhanced by chemical pickling.</li>
+    </ul>
+
+    <h3>No.1 (hot rolled, annealed, pickled)</h3>
+    <ul>
+      <li><strong>Appearance:</strong> Rough, dull, off-white, non-uniform.</li>
+      <li><strong>Cost-effective:</strong> Less processing.</li>
+      <li><strong>Mechanical properties:</strong> High strength and durability.</li>
+      <li><strong>Use:</strong> Ideal for heavy-duty, high-temperature applications.</li>
+    </ul>
+
+    <h3>BA (bright annealed in oxygen-free atmosphere)</h3>
+    <ul>
+      <li><strong>Appearance:</strong> Smooth, reflective, bright—near mirror-like (≈70–90% reflectivity).</li>
+      <li><strong>Hygiene:</strong> Non-porous; resists bacterial growth (great for sanitary use).</li>
+      <li><strong>Corrosion resistance:</strong> Enhanced chromium oxide layer.</li>
+    </ul>
+
+    <h3>2B (cold-rolled, annealed, light cold pass)</h3>
+    <ul>
+      <li><strong>Appearance:</strong> Smooth, bright but not fully mirrored; hazy, semi-reflective.</li>
+      <li><strong>Pattern:</strong> Slight directional pattern from rolling.</li>
+      <li><strong>Corrosion resistance:</strong> Enhanced, economical for functional use.</li>
+    </ul>
+
+    <h3>2B PVC (2B with protective film)</h3>
+    <ul>
+      <li>Supplied with removable protective PVC film to prevent scratches during handling and transport.</li>
+    </ul>
+
+    <h3>PVC BA (BA with protective film)</h3>
+    <ul>
+      <li>Supplied with removable protective PVC film to prevent scratches during handling and transport.</li>
+    </ul>
+
+    <h3>No.4 PVC (fine abrasive belts with protective film)</h3>
+    <ul>
+      <li><strong>Appearance:</strong> Satin-like, non-reflective, uniform brushed look with short parallel grain.</li>
+      <li><strong>Durability:</strong> Durable and often repairable with light abrasive pads; low-maintenance.</li>
+    </ul>
+  </section>
+
   <p><a href="ask-question.html" class="cta-btn">Ask a Question</a> <a href="request-quote.html" class="cta-btn accent">Request a Quote</a></p>
 </main>
 <footer class="site-footer">
   <p>&copy; <span id="year"></span> Bend Cut Send.</p>
 </footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .msg-success { color: #138a36; display: inline-block; margin-top: .25rem; }
+    .msg-error { color: #c62828; display: inline-block; margin-top: .25rem; }
+  </style>
 </head>
 <body>
 <nav class="navbar">
@@ -194,8 +198,11 @@
       <textarea name="comments" rows="5"></textarea>
     </label>
     <label>Design File (optional)
-      <input type="file" name="design_file" accept=".dwg,.dwt,.dxf,.dws,.dwf,.dwfx,.dxb,.pdf,.stl,.jpeg,.jpg,.png,.tiff,.bmp">
-      <small>Allowed: dwg, dwt, dxf, dws, dwf, dwfx, dxb, pdf, stl, jpeg, jpg, png, tiff, bmp (Max 25MB)</small>
+      <input id="design_file" type="file" name="design_file"
+             accept=".dwg,.dwt,.dxf,.dws,.dwf,.dwfx,.dxb,.pdf,.stl,.jpeg,.jpg,.png,.tiff,.bmp"
+             aria-describedby="design_file_help design_file_status">
+      <small id="design_file_help">Allowed: dwg, dwt, dxf, dws, dwf, dwfx, dxb, pdf, stl, jpeg, jpg, png, tiff, bmp (Max 25MB)</small>
+      <small id="design_file_status" role="status" aria-live="polite"></small>
     </label>
     <button type="submit" class="cta-btn accent">Submit Request</button>
   </form>
@@ -203,6 +210,37 @@
 <footer class="site-footer">
   <p>&copy; <span id="year"></span> Bend Cut Send.</p>
 </footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function () {
+    const input = document.getElementById('design_file');
+    const status = document.getElementById('design_file_status');
+    if (!input || !status) return;
+
+    const allowed = ['dwg','dwt','dxf','dws','dwf','dwfx','dxb','pdf','stl','jpeg','jpg','png','tiff','bmp'];
+
+    input.addEventListener('change', function () {
+      status.textContent = '';
+      status.className = '';
+
+      if (!this.files || this.files.length === 0) return;
+
+      const file = this.files[0];
+      const name = (file.name || '').toLowerCase();
+      const ext = name.includes('.') ? name.split('.').pop() : '';
+
+      if (!allowed.includes(ext)) {
+        this.value = '';
+        status.textContent = 'File type not allowed. Allowed: ' + allowed.join(', ');
+        status.className = 'msg-error';
+        return;
+      }
+
+      status.textContent = 'Upload successful';
+      status.className = 'msg-success';
+    });
+  })();
+</script>
 </body>
 </html>

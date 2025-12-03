@@ -219,6 +219,7 @@
     if (!input || !status) return;
 
     const allowed = ['dwg','dwt','dxf','dws','dwf','dwfx','dxb','pdf','stl','jpeg','jpg','png','tiff','bmp'];
+    const MAX_BYTES = 25 * 1024 * 1024; // 25MB
 
     input.addEventListener('change', function () {
       status.textContent = '';
@@ -230,9 +231,18 @@
       const name = (file.name || '').toLowerCase();
       const ext = name.includes('.') ? name.split('.').pop() : '';
 
+      // Type check
       if (!allowed.includes(ext)) {
         this.value = '';
         status.textContent = 'File type not allowed. Allowed: ' + allowed.join(', ');
+        status.className = 'msg-error';
+        return;
+      }
+
+      // Size check
+      if (file.size > MAX_BYTES) {
+        this.value = '';
+        status.textContent = 'File is too large. Maximum size is 25MB.';
         status.className = 'msg-error';
         return;
       }

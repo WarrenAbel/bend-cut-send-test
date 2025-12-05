@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Payment (Demo) | Bend Cut Send</title>
+  <title>Payment | Bend Cut Send</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <nav class="navbar">
@@ -16,17 +16,26 @@
   <a href="ask-question.html">Ask a Question</a>
 </nav>
 <main class="container">
-  <h1>Payment (Demo)</h1>
-  <p>This static page demonstrates where a payment redirect would occur. In production (PHP hosting), a secure form posts to PayFast or the selected gateway and handles ITN notifications server-side.</p>
+  <h1>Secure Payment</h1>
+  <p>Enter your quote/reference to pay securely using PayFast or Ozow. You’ll be redirected to a secure hosted payment page.</p>
   <div class="form-card">
-    <p><strong>Item:</strong> Custom Metal Part</p>
-    <p><strong>Amount:</strong> R 500.00</p>
-    <button class="cta-btn" onclick="alert('Static demo only. Redirect would occur here.');">Proceed to Secure Payment</button>
+    <label>Quote/Reference
+      <input type="text" id="quoteRef" placeholder="e.g., Q-2025-00123" autocomplete="off" required>
+    </label>
+    <div class="grid-2">
+      <button id="payfastBtn" class="cta-btn">Pay with PayFast</button>
+      <button id="ozowBtn" class="cta-btn accent">Pay with Ozow</button>
+    </div>
+    <small>We never store or process your card details. Payments are handled by PCI‑DSS compliant providers.</small>
   </div>
 </main>
 <footer class="site-footer">
   <p>&copy; <span id="year"></span> Bend Cut Send.</p>
 </footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+  // Optional: override backend base URL at runtime
+  // window.BCS_BACKEND_BASE_URL = 'https://admin.your-domain.tld';
+</script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -30,7 +30,14 @@
     const ref = (quoteRefEl.value || '').trim();
     if (!ref) { alert('Please enter your Quote/Reference.'); return; }
     getPaymentUrl(provider, ref)
-      .then(url => { window.location.href = url; })
+      .then(url => {
+        if (!/^https?:\/\//i.test(url)) {
+          const base = BACKEND_BASE_URL.replace(/\/$/, '');
+          if (!url.startsWith('/')) url = '/' + url;
+          url = base + url;
+        }
+        window.location.href = url;
+      })
       .catch(err => { console.error(err); alert('Unable to start payment. Please try again.'); });
   }
 

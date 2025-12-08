@@ -19,8 +19,20 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ reference, success_url: successUrl, cancel_url: cancelUrl })
     });
-    if (!res.ok) throw new Error('Failed to get payment URL');
-    const data = await res.json();
+
+    const text = await res.text();
+    if (!res.ok) {
+      // Surface server response for easier debugging
+      throw new Error('HTTP ' + res.status + ': ' + text);
+    }
+
+    let data = {};
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch (e) {
+      throw new Error('Invalid JSON from server: ' + text);
+    }
+
     if (!data.url) throw new Error('No URL returned');
     return data.url;
   }
@@ -29,8 +41,10 @@
     if (!quoteRefEl) return;
     const ref = (quoteRefEl.value || '').trim();
     if (!ref) { alert('Please enter your Quote/Reference.'); return; }
+
     getPaymentUrl(provider, ref)
       .then(url => {
+        // Prefix relative URLs with backend base
         if (!/^https?:\/\//i.test(url)) {
           const base = BACKEND_BASE_URL.replace(/\/$/, '');
           if (!url.startsWith('/')) url = '/' + url;
@@ -38,7 +52,10 @@
         }
         window.location.href = url;
       })
-      .catch(err => { console.error(err); alert('Unable to start payment. Please try again.'); });
+      .catch(err => {
+        console.error(err);
+        alert('Unable to start payment. ' + (err && err.message ? err.message : 'Please try again.'));
+      });
   }
 
   if (payfastBtn) payfastBtn.addEventListener('click', () => handleClick('payfast'));

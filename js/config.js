@@ -1,1 +1,1 @@
-window.BCS_BACKEND_BASE_URL = 'https://automatic-space-parakeet-wrj469596wgghgp7p.github.dev/';
+window.BCS_BACKEND_BASE_URL = 'https://automatic-space-parakeet-wrj469596wgghgp7p-8000.app.github.dev/';

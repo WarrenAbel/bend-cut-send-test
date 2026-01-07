@@ -1,4 +1,5 @@
 <?php
-// Placeholder for converted content
 
-?>
+// Converted PHP file content.
+
+echo "Hello, World!";

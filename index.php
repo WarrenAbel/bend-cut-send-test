@@ -1,1 +1,4 @@
-I am converting index.html to PHP.
+<?php
+// Placeholder for converted content
+
+?>

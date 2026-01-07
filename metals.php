@@ -1,15 +1,12 @@
 <?php
-// Converted PHP Code for Metals
 
-// Define a simple array of metals
-$metals = ["gold", "silver", "platinum", "copper", "iron"];
+// Array of metals
+$metals = [
+    'Aluminum',
+    'Brass',
+    'Copper',
+    'Steel',
+    'Titanium'
+];
 
-// Function to display each metal
-function displayMetals($metals) {
-    foreach ($metals as $metal) {
-        echo $metal . "\n";
-    }
-}
-
-// Execute the function
-displayMetals($metals);
+?>

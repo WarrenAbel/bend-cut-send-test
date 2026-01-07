@@ -1,28 +1,28 @@
 <?php
-// Start PHP tag
+
+// Converted request-quote.php script
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+
+    if ($name && $email && $message) {
+        $to = 'example@example.com';
+        $subject = 'Quote Request';
+        $body = "Name: $name\nEmail: $email\nMessage: $message";
+        $headers = 'From: ' . $email;
+
+        if (mail($to, $subject, $body, $headers)) {
+            echo 'Your quote request has been sent successfully.';
+        } else {
+            echo 'Failed to send your quote request. Please try again later.';
+        }
+    } else {
+        echo 'Please fill in all fields correctly.';
+    }
+} else {
+    echo 'Invalid request method.';
+}
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request a Quote</title>
-</head>
-<body>
-    <h1>Request a Quote</h1>
-
-    <form method="post" action="submit-quote.php">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="details">Details:</label>
-        <textarea id="details" name="details" required></textarea>
-
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>

@@ -1,0 +1,1 @@
+<?php echo "This is the How It Works page" ?>

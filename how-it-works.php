@@ -53,7 +53,7 @@
         <li>Tolerances required for cutting and bending</li>
         <li>How much assistance you need to get to the final approved design</li>
       </ul>
-      <p>If you require specialised metals, thicknesses or surface finishes, or if you required different processes like stamping or punching, please reach out to see if we can help with what you need.</p>
+      <p>If you require specialised metals, thicknesses or surface finishes, or if you require different processes like stamping or punching, please reach out to see if we can help with what you need.</p>
     </li>
 
     <li>

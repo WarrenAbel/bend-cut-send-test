@@ -1,5 +1,4 @@
 <?php
-// Content of ask-question.php converted from ask-question.html
+// ask-question.php - Example converted PHP content
 
-// Your PHP logic or content can follow here.
-?>
+echo "This is the converted ask-question.php file.";

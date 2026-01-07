@@ -22,7 +22,7 @@
 
   <ol>
     <li>
-      <h2>Your design File upload</h2>
+      <h2>Your Design & File Upload</h2>
       <p>Our machines need to know where to cut, and where and how to bend, if required.</p>
       <p>The best file format is an AutoCAD drawing file (dwg, dwt, dxf, dws, dwf, dwfx, dxb). Most CAD packages can save your designs as an AutoCAD drawing sketch file. If your designs require bends, the position, angle and bend radius of the bends must be shown.</p>
       <p>If you don't know CAD, or if you can't produce an AutoCAD drawing file, get in touch. We can work with what you have, including:</p>
@@ -38,7 +38,7 @@
       <h2>Final design &amp; quote</h2>
       <p>We will send you a copy of the final design to approve, along with a quote. We will include an estimate of the date of delivery with the quote.</p>
       <p>At this point you need to approve the final design – if you have any questions or changes to the design, now is the time to make sure you are happy and that the part will satisfy your requirements.</p>
-      <p>We may also present you with alternative designs that either / and:</p>
+      <p>We may also present you with alternative designs that:</p>
       <ul>
         <li>Make the part easier or possible to produce (e.g. some bends look feasible in CAD, but are not possible to bend in reality)</li>
         <li>Make the part cheaper to produce or assemble</li>

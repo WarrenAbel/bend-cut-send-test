@@ -1,6 +1,15 @@
 <?php
-// Organization Code: Placeholder
+// Converted PHP Code for Metals
 
-?>
+// Define a simple array of metals
+$metals = ["gold", "silver", "platinum", "copper", "iron"];
 
-<!-- Add converted contents of metals.html here -->
+// Function to display each metal
+function displayMetals($metals) {
+    foreach ($metals as $metal) {
+        echo $metal . "\n";
+    }
+}
+
+// Execute the function
+displayMetals($metals);

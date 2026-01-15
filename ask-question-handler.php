@@ -73,7 +73,7 @@ $mailSuccess = mail($to, $emailSubject, $body, $headers);
 
 // ==================== Response ====================
 if ($mailSuccess) {
-    header('Location: /thank-you.html');
+    header('Location: thank-you.html');
     exit();
 } else {
     http_response_code(500);

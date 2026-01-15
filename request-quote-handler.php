@@ -198,7 +198,7 @@ if ($uploadedFile && file_exists($uploadedFile)) {
 
 // ==================== Response ====================
 if ($mailSuccess) {
-    header('Location: /thank-you.html');
+    header('Location: thank-you.html');
     exit();
 } else {
     http_response_code(500);

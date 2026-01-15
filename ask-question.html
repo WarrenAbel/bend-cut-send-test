@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Ask a Question | Bend Cut Send</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="styles.css?v=20251201">
+  <meta name="theme-color" content="#016e6f">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -19,31 +21,38 @@
 
 <main class="container">
   <h1>Ask a Question</h1>
-  <p>This is a static demo. In production, the form stores your question and emails you a confirmation.</p>
+  <p>Have a question about our services, materials, or processes? We're here to help!</p>
 
-  <form class="form-card" onsubmit="alert('Static demo only. No submission processed.'); return false;">
-    <div class="grid-2">
-      <label>First Name
-        <input type="text" name="first_name" required>
-      </label>
-      <label>Last Name
-        <input type="text" name="last_name" required>
-      </label>
-    </div>
-    <label>Email
-      <input type="email" name="email" required>
+  <form class="form-card" action="ask-question-handler.php" method="post">
+    <label>Name (required)
+      <input type="text" name="name" required maxlength="100">
     </label>
-    <label>Your Question
-      <textarea name="question" rows="6" required></textarea>
+    
+    <label>Email (required)
+      <input type="email" name="email" required maxlength="320">
     </label>
-    <!-- For real GitHub Pages submission you could integrate Formspree later -->
-    <button type="submit" class="cta-btn">Submit Question</button>
+    
+    <label>Phone (optional)
+      <input type="tel" name="phone" maxlength="20">
+    </label>
+    
+    <label>Subject (optional)
+      <input type="text" name="subject" maxlength="200">
+    </label>
+    
+    <label>Message (required)
+      <textarea name="message" rows="6" required maxlength="5000"></textarea>
+    </label>
+    
+    <button type="submit" class="cta-btn accent">Submit Question</button>
   </form>
 </main>
 
 <footer class="site-footer">
-  <p>&copy; <span id="year"></span> Bend Cut Send.</p>
+  <p>&copy; <span id="year"></span> Bend Cut Send. All rights reserved.</p>
 </footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

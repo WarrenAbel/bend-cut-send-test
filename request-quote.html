@@ -2,12 +2,322 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Request a Quote</title>
-  <meta http-equiv="refresh" content="0; url=request-quote_Version2.html">
-  <link rel="canonical" href="request-quote_Version2.html">
-  <script>window.location.replace('request-quote_Version2.html');</script>
+  <title>Request a Quote | Bend Cut Send</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#016e6f">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .msg-success { color: #138a36; display: inline-block; margin-top: .25rem; font-size: 0.9rem; }
+    .msg-error { color: #c62828; display: inline-block; margin-top: .25rem; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-  <p>If you are not redirected automatically, <a href="request-quote_Version2.html">click here to go to the Request a Quote page</a>.</p>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="metals.html">Metals Available</a>
+  <a href="qa.html">Q&amp;A</a>
+  <a href="request-quote.html" class="active">Request a Quote</a>
+  <a href="ask-question.html">Ask a Question</a>
+</nav>
+
+<main class="container">
+  <h1>Request a Quote</h1>
+  <p>Fill out the form below to request a quote for your custom metal fabrication project.</p>
+
+  <form class="form-card" action="request-quote-handler.php" method="post" enctype="multipart/form-data" id="quoteForm">
+    <div class="grid-2">
+      <label>First Name (required)
+        <input type="text" name="first_name" required maxlength="100">
+      </label>
+      <label>Last Name (required)
+        <input type="text" name="last_name" required maxlength="100">
+      </label>
+    </div>
+
+    <label>Email (required)
+      <input type="email" name="email" required maxlength="320">
+    </label>
+
+    <label>Phone Number (required)
+      <input type="tel" name="phone" required maxlength="20">
+    </label>
+
+    <div class="grid-2">
+      <label>Street Address (required)
+        <input type="text" name="street" placeholder="Street number and name" required maxlength="200">
+      </label>
+      <label>City (required)
+        <input type="text" name="city" required maxlength="100">
+      </label>
+    </div>
+
+    <div class="grid-2">
+      <label>Building Type (required)
+        <select name="building_type" required>
+          <option value="">-- Select --</option>
+          <option value="House">House</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Office">Office</option>
+          <option value="Industrial">Industrial</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label>Postal Code (required)
+        <input type="text" name="postal_code" inputmode="numeric" pattern="\d{4}" title="4-digit postal code" placeholder="e.g., 2191" required maxlength="4">
+      </label>
+    </div>
+
+    <label>Material (required)
+      <select name="material" id="material" required>
+        <option value="">-- Select Material --</option>
+        <option value="mild_steel">Mild Steel</option>
+        <option value="3cr12">3CR12 Stainless Steel</option>
+        <option value="430">430 Stainless Steel</option>
+        <option value="304">304 Stainless Steel</option>
+        <option value="316">316 Stainless Steel</option>
+        <option value="aluminium_1050">Aluminium 1050</option>
+      </select>
+    </label>
+
+    <label>Surface Finish (required)
+      <select name="surface_finish" id="surface_finish" required disabled>
+        <option value="">-- Select Material First --</option>
+      </select>
+    </label>
+
+    <label>Thickness (required)
+      <select name="thickness" id="thickness" required disabled>
+        <option value="">-- Select Surface Finish First --</option>
+      </select>
+    </label>
+
+    <label>Quantity (required)
+      <input type="number" name="quantity" value="1" min="1" step="1" inputmode="numeric" required>
+    </label>
+
+    <label>Comments (optional)
+      <textarea name="comments" rows="5" maxlength="5000"></textarea>
+    </label>
+
+    <label>Design File (required)
+      <input id="design_file" type="file" name="design_file" required
+             accept=".dwg,.dwt,.dxf,.dws,.dwf,.dwfx,.dxb,.pdf,.stl,.jpeg,.jpg,.png,.tiff,.bmp"
+             aria-describedby="design_file_help design_file_status">
+      <small id="design_file_help">Allowed: dwg, dwt, dxf, dws, dwf, dwfx, dxb, pdf, stl, jpeg, jpg, png, tiff, bmp (Max 25MB)</small>
+      <small id="design_file_status" role="status" aria-live="polite"></small>
+    </label>
+
+    <button type="submit" class="cta-btn accent">Submit Request</button>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Bend Cut Send. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Material data structure matching PHP handler
+  const materialData = {
+    mild_steel: {
+      label: 'Mild Steel',
+      finishes: {
+        cold_rolled: {
+          label: 'Cold Rolled',
+          thicknesses: ['0.8', '1.0', '1.2']
+        },
+        hot_rolled: {
+          label: 'Hot Rolled',
+          thicknesses: ['1.6', '2.0', '2.5', '3.0', '4.0', '4.5', '5.0', '6.0', '8.0', '10.0']
+        },
+        galvanised: {
+          label: 'Galvanised',
+          thicknesses: ['0.6', '0.8', '1.0', '1.2', '1.5', '2.0', '2.5', '3.0']
+        }
+      }
+    },
+    '3cr12': {
+      label: '3CR12 Stainless Steel',
+      finishes: {
+        '2d': {
+          label: '2D',
+          thicknesses: ['1.0', '1.5', '2.0', '2.5']
+        },
+        no1: {
+          label: 'No.1',
+          thicknesses: ['3.0', '4.5', '6.0', '8.0', '10.0']
+        }
+      }
+    },
+    '430': {
+      label: '430 Stainless Steel',
+      finishes: {
+        ba: {
+          label: 'BA',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5']
+        },
+        '2b': {
+          label: '2B',
+          thicknesses: ['2.0']
+        },
+        pvc_ba: {
+          label: 'PVC BA',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5']
+        },
+        '2b_pvc': {
+          label: '2B PVC',
+          thicknesses: ['2.0']
+        },
+        no4_pvc: {
+          label: 'No.4 PVC',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0']
+        }
+      }
+    },
+    '304': {
+      label: '304 Stainless Steel',
+      finishes: {
+        '2b': {
+          label: '2B',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0', '2.5', '3.0', '4.0']
+        },
+        no1: {
+          label: 'No.1',
+          thicknesses: ['4.5', '6.0', '8.0', '10.0']
+        },
+        '2b_pvc': {
+          label: '2B PVC',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0', '2.5', '3.0', '4.0']
+        },
+        no4_pvc: {
+          label: 'No.4 PVC',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0', '2.5', '3.0', '4.0']
+        }
+      }
+    },
+    '316': {
+      label: '316 Stainless Steel',
+      finishes: {
+        '2b': {
+          label: '2B',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0', '2.5', '3.0', '4.0']
+        },
+        no1: {
+          label: 'No.1',
+          thicknesses: ['4.5', '6.0', '8.0', '10.0']
+        },
+        '2b_pvc': {
+          label: '2B PVC',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0', '2.5', '3.0', '4.0']
+        },
+        no4_pvc: {
+          label: 'No.4 PVC',
+          thicknesses: ['0.7', '0.9', '1.2', '1.5', '2.0', '2.5', '3.0', '4.0']
+        }
+      }
+    },
+    aluminium_1050: {
+      label: 'Aluminium 1050',
+      finishes: {
+        mill: {
+          label: 'Mill',
+          thicknesses: ['1.2', '1.5', '2.0', '3.0', '4.5', '6.0']
+        },
+        mill_pvc: {
+          label: 'Mill PVC',
+          thicknesses: ['1.2', '1.5', '2.0', '3.0']
+        }
+      }
+    }
+  };
+
+  // Cascading select logic
+  const materialSelect = document.getElementById('material');
+  const finishSelect = document.getElementById('surface_finish');
+  const thicknessSelect = document.getElementById('thickness');
+
+  materialSelect.addEventListener('change', function() {
+    const material = this.value;
+    
+    // Reset and disable dependent selects
+    finishSelect.innerHTML = '<option value="">-- Select Surface Finish --</option>';
+    finishSelect.disabled = !material;
+    thicknessSelect.innerHTML = '<option value="">-- Select Surface Finish First --</option>';
+    thicknessSelect.disabled = true;
+
+    if (material && materialData[material]) {
+      const finishes = materialData[material].finishes;
+      for (const [key, data] of Object.entries(finishes)) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = data.label;
+        finishSelect.appendChild(option);
+      }
+    }
+  });
+
+  finishSelect.addEventListener('change', function() {
+    const material = materialSelect.value;
+    const finish = this.value;
+    
+    // Reset thickness select
+    thicknessSelect.innerHTML = '<option value="">-- Select Thickness --</option>';
+    thicknessSelect.disabled = !finish;
+
+    if (material && finish && materialData[material] && materialData[material].finishes[finish]) {
+      const thicknesses = materialData[material].finishes[finish].thicknesses;
+      thicknesses.forEach(thickness => {
+        const option = document.createElement('option');
+        option.value = thickness;
+        option.textContent = thickness + 'mm';
+        thicknessSelect.appendChild(option);
+      });
+    }
+  });
+
+  // File upload validation
+  (function () {
+    const input = document.getElementById('design_file');
+    const status = document.getElementById('design_file_status');
+    if (!input || !status) return;
+
+    const allowed = ['dwg','dwt','dxf','dws','dwf','dwfx','dxb','pdf','stl','jpeg','jpg','png','tiff','bmp'];
+    const MAX_BYTES = 25 * 1024 * 1024; // 25MB
+
+    input.addEventListener('change', function () {
+      status.textContent = '';
+      status.className = '';
+
+      if (!this.files || this.files.length === 0) return;
+
+      const file = this.files[0];
+      const name = (file.name || '').toLowerCase();
+      const ext = name.includes('.') ? name.split('.').pop() : '';
+
+      // Type check
+      if (!allowed.includes(ext)) {
+        this.value = '';
+        status.textContent = 'File type not allowed. Allowed: ' + allowed.join(', ');
+        status.className = 'msg-error';
+        return;
+      }
+
+      // Size check
+      if (file.size > MAX_BYTES) {
+        this.value = '';
+        status.textContent = 'File is too large. Maximum size is 25MB.';
+        status.className = 'msg-error';
+        return;
+      }
+
+      status.textContent = 'File validated successfully';
+      status.className = 'msg-success';
+    });
+  })();
+</script>
 </body>
 </html>
